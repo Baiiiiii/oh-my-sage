@@ -108,6 +108,7 @@ export function formatDeviceDetailsMarkdown(devices: Array<{
   modelName?: string;
   online?: boolean;
   roomName?: string;
+  urn?: string;
   properties?: MiotPropertyCapability[];
   events?: MiotEventCapability[];
   triggers?: Array<{
@@ -136,6 +137,7 @@ export function formatDeviceDetailsMarkdown(devices: Array<{
     lines.push(`- 型号: ${device.model || "未知"} - ${device.modelName || "未知"}`);
     lines.push(`- 状态: ${device.online ? "在线 ✅" : "离线 ❌"}`);
     lines.push(`- 房间: ${device.roomName || "未分组"}`);
+    lines.push(`- URN: ${device.urn || "未知"}`);
     lines.push("");
 
     if (device.properties && device.properties.length > 0) {

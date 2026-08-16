@@ -88,7 +88,7 @@ Error Handling:
       title: "获取设备详情",
       description: `获取指定设备的详细信息，包括 MIOT Spec 能力定义。
 
-返回完整 MIOT Spec 能力：所有属性的读写订阅权限、类型、单位、枚举取值、数值范围，以及事件参数和动作输入参数。排查设备映射时优先使用本工具，无需先读取日志。
+返回完整 MIOT Spec 能力：所有属性的读写订阅权限、类型、单位、枚举取值、数值范围，以及事件参数和动作输入参数。同时返回该设备的完整 URN，构造规则节点的 cfg.urn 时直接使用，不要从型号字符串推导版本号。排查设备映射时优先使用本工具，无需先读取日志。
 
 Args:
   - dids (string[]): 设备ID数组，支持批量查询
@@ -97,6 +97,7 @@ Args:
 Returns:
   - devices: 设备详情列表
   - notFound: 网关设备表中不存在的设备ID列表（为空表示全部命中）
+  - 每个设备含 urn: 完整 MIOT URN，规则节点 cfg.urn 必须与之完全一致
   - 包含 properties(所有字段约束), events(事件及参数), triggers, actions(含输入参数), readable
   - 每个设备含 found 字段：false 表示该ID在网关设备表中不存在，其余字段为占位空值
 
